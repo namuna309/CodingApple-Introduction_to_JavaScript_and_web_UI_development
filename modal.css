@@ -5,7 +5,16 @@
     background : rgba(0,0,0,0.5);
     z-index : 5;
     padding: 30px;
+    /* 애니메이션으로 위한 display: none 대용 */
+    visibility: hidden;
+    /* 
+    display: none -> html에서 제거
+    visibility; hidden -> 안보이게 함
+    */
+    opacity: 0;
+    transition: all 0.5s;
   }
+
   .white-bg {
     background: white;
     border-radius: 5px;
@@ -14,4 +23,9 @@
 
   .hide {
     display: none;
+  }
+
+  .show-modal {
+    visibility: visible;
+    opacity: 1;
   }
