@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="alert-box" id="alert">
+        <p>알림창임</p>
+
+        <button id="close">닫기</button>
+    </div>
+    
+    <button>버튼1</button>
+    <button>버튼2</button>
+
+    <!-- 자바스크립트 function 문법 사용법 -->
+
+    <script>
+
+        document.getElementById('close').addEventListener('click', function(구멍) {
+            document.getElementById('alert').style.display = 'none';
+        });
+
+        function 알림창닫기() {
+            document.getElementById('alert').style.display = 'none';
+        }
+
+        // function의 파라미터 문법
+        function 알림창열기(구멍) {
+            document.getElementById('alert').style.display = 구멍;
+        }
+
+    </script>
+
+    
+    
+</body>
+</html>
