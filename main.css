@@ -13,3 +13,8 @@
 .show {
     display: block;
 }
+
+.login {
+    margin: 40px;
+    z-index: 1;
+}
