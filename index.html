@@ -20,12 +20,12 @@
     <div class="alert-box" id="alert">알림창임
         <!-- 숙제: 알림창에 닫기버튼 추가하고 닫기버튼 클릭시 알림창 닫게 하기 -->
         <button onclick="
-            document.getElementById('alert').style.display = 'none';
+            alertOnOff('none');
         ">닫기</button>
     </div>
     
 
-    <button onclick="알림창열기()">버튼</button>
+    <button onclick="alertOnOff('block')">버튼</button>
 
     <!-- 자바스크립트 function 문법 사용법 -->
 
@@ -33,7 +33,16 @@
         function 알림창열기() {
             document.getElementById('alert').style.display = 'block';
         }
+
+        // 자바스크립트 function 문법 사용법 - 숙제
+
+        function alertOnOff(state) {
+            document.getElementById('alert').style.display = state;
+        }
+
     </script>
+
+    
     
 </body>
 </html>
