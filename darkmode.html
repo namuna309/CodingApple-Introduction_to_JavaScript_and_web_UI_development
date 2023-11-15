@@ -29,7 +29,7 @@
     </div>
 
 
-    <nav class="navbar navbar-ligth-bg-light">
+    <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
             <span class="navbar-brand">JSShop</span>
             <span class="badge bg-dark">Dark 🔄</span>
@@ -50,10 +50,12 @@
         $('.badge').on('click', function() {
             if(dark) {
                 $('.badge').html('Light 🔄');
+                $('.navbar.navbar-light.bg-light').attr('class', 'navbar navbar-dark bg-dark')
                 dark = false;
             }else {
                 dark = true;
                 $('.badge').html('Dark 🔄');
+                $('.navbar.navbar-dark.bg-dark').attr('class', 'navbar navbar-light bg-light')
             }
         })
 
