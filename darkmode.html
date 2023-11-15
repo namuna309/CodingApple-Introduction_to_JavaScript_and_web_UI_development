@@ -45,14 +45,14 @@
         // 2. badge 짝수번 클릭 시 내부 글자를 Dark로 변경
         // ...
 
-        var count = 0;
+        var dark = true;
         
         $('.badge').on('click', function() {
-            count++;
-            console.log(count)
-            if(count % 2) {
+            if(dark) {
                 $('.badge').html('Light 🔄');
+                dark = false;
             }else {
+                dark = true;
                 $('.badge').html('Dark 🔄');
             }
         })
