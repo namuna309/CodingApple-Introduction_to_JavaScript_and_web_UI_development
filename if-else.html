@@ -32,14 +32,32 @@
         // 숙제 - input값 공백 점검 후 alert 띄우기
         // 1. 전송버튼 클릭
         // 2. input에 입력한 값이 공백이면 알림창 알림
-        $('#submit').on('click', function() {
+        $('#submit').on('click', function(e) {
             var ID = $.trim($('#id').val());
             var PW = $.trim($('#password').val());
             if(ID.length == 0 || PW.length == 0) {
                 alert('아이디 또는 패스워드를 입력해주세요');
-                return false;
+                e.preventDefault();
+            } else if(PW.length < 6) {
+                // 추가 숙제
+                alert('패스워드를 더 길게 입력하세요')
+                e.preventDefault();
             }
-            return true;
+            
+        });
+
+        // 아래 코드도 똑같이 작동함
+        $('form').on('submit', function() {
+            var ID = $.trim($('#id').val());
+            var PW = $.trim($('#password').val());
+            if(ID.length == 0 || PW.length == 0) {
+                alert('아이디 또는 패스워드를 입력해주세요');
+                e.preventDefault();
+            } else if(PW.length < 6) {
+                alert('패스워드를 더 길게 입력하세요')
+                e.preventDefault();
+            }
+            
         });
         
     </script>
