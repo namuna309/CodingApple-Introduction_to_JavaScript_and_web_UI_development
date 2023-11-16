@@ -87,10 +87,10 @@
         // })
 
         // 숙제: 1. 스크롤바 100px 이상 내리면 로고 폰트사이즈 줄이기, 2. 박스의 스크롤바 끝까지 내리면 alert() 띄우기
+        // 숙제 1
         var fontSize_str = $('.navbar-brand').css('font-size');
         var fontSize = parseInt(fontSize_str.slice(0, -2));
         
-        // 숙제 1
         $(window).on('scroll', () => {
             if ($(window).scrollTop() >= 100) {
                 if (fontSize > 10) {
