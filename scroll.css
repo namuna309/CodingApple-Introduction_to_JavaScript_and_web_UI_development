@@ -1,0 +1,14 @@
+.navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+}
+
+.navbar-brand {
+    font-size: 30px;
+}
+
+:root {
+    /* bootstrap으로 인해 스크롤바 스므스하게 움직이는거 방지 */
+    scroll-behavior: auto;
+}
