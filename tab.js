@@ -5,25 +5,14 @@
 // 4. div0에 show 클래스명 추가
 
 var tabNum = $('.tab-button').length;
+var tabButton = $('.tab-button');
+var tabContent = $('.tab-content')
 
-$('.tab-button').eq(0).on('click', () => {
-    $('.tab-button').removeClass('orange');
-    $('.tab-content').removeClass('show');
-    $('.tab-button').eq(0).addClass('orange');
-    $('.tab-content').eq(0).addClass('show');
-});
-
-$('.tab-button').eq(1).on('click', () => {
-    $('.tab-button').removeClass('orange');
-    $('.tab-content').removeClass('show');
-    $('.tab-button').eq(1).addClass('orange');
-    $('.tab-content').eq(1).addClass('show');
-});
-
-$('.tab-button').eq(2).on('click', () => {
-    $('.tab-button').removeClass('orange');
-    $('.tab-content').removeClass('show');
-    $('.tab-button').eq(2).addClass('orange');
-    $('.tab-content').eq(2).addClass('show');
-});
-
+for (let i = 0; i < tabNum; i++) {
+    $('.tab-button').eq(i).on('click', () => {
+        tabButton.removeClass('orange');
+        tabContent.removeClass('show');
+        tabButton.eq(i).addClass('orange');
+        tabContent.eq(i).addClass('show');
+    });
+}
