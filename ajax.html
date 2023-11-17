@@ -31,8 +31,35 @@
             </div>`;
             $('.row').append(cardHtml);
         })
-
       </script>
+
+    <div class="container">
+        <button class="btn btn-danger">더보기</button>
+    </div>
+
+    <script>
+        var cnt = 1
+
+
+        $('.btn').click(function() {
+            $('.container').eq(1).addClass('container-hide');
+            $.get(`https://codingapple1.github.io/js/more${cnt}.json`)
+            .done(products => {
+                products.forEach(product => {
+                    var cardHtml = `<div class="col-sm-4">
+                        <img src="https://via.placeholder.com/600" class="w-100">
+                        <h5>${product.title}</h5>
+                        <p>가격 : ${product.price}</p>
+                        </div>`;
+                        $('.row').append(cardHtml);
+                    });
+                cnt++;
+                $.get(`https://codingapple1.github.io/js/more${cnt}.json`)
+                .done(() => {$('.container').eq(1).removeClass('container-hide');})
+            })
+                        
+        });
+    </script>
 
       <!-- ajax로 GET 요청하는 법 -->
       <script>

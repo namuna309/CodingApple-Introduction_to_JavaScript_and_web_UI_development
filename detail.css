@@ -34,7 +34,9 @@ ul.list {
   .show {
     display: block;
   }
-
   .form-hide {
+    display: none;
+  }
+  .container-hide {
     display: none;
   }
