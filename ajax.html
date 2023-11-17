@@ -15,7 +15,7 @@
         </div>
       </div> 
 
-      <!-- 숙제: 상품목록 3개 생성하기(자바스크립트로 html 생성) -->
+      <!-- ajax1 숙제: 상품목록 3개 생성하기(자바스크립트로 html 생성) -->
       <script>
         var products = [
           { id : 0, price : 70000, title : 'Blossom Dress' },
@@ -23,14 +23,15 @@
           { id : 2, price : 60000, title : 'Black Monastery' }
         ];
         
-        for(var i = 0; i < 3; i++) {
+        products.forEach(product => {
             var cardHtml = `<div class="col-sm-4">
               <img src="https://via.placeholder.com/600" class="w-100">
-              <h5>${products[i].title}</h5>
-              <p>가격 : ${products[i].price}</p>
+              <h5>${product.title}</h5>
+              <p>가격 : ${product.price}</p>
             </div>`;
             $('.row').append(cardHtml);
-        }
+        })
+
       </script>
 
       <!-- ajax로 GET 요청하는 법 -->
