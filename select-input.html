@@ -31,25 +31,59 @@
         <select class="form-select mt-2">
             <option>모자</option>
             <option>셔츠</option>
+            <option>바지</option>
         </select>
-        <select class="form-select mt-2 form-hide">
-            <option>90</option>
-            <option>95</option>
-            <option>100</option>
+        <select class="form-select mt-2">
         </select>
     </form>
+    <!-- Select 2: 자바스크립트로 html 생성하는법 -->
+    <div id="test">
+
+    </div>
+
+    <script>
+        // Select 2: 자바스크립트로 html 생성하는법 1
+        var a = document.createElement('p');
+        a.innerHTML = '안녕';
+        document.querySelector('#test').appendChild(a);
+        // Select 2: 자바스크립트로 html 생성하는법 2
+        var temp = '<p>안녕</p>';
+        document.querySelector('#test').insertAdjacentHTML('beforeend', temp);
+        // jQuery ver
+        $('#test').append(temp);
+    </script>
 
     <script>
         // 유저가 셔츠고르면
         // form-hide 떼어주세요~
+        // //select 1: 인풋 다루기
+        // $('.form-select').eq(0).on('input', function(e) {
+        //     var value = e.currentTarget.value;
+        //     if (value == '셔츠') {
+        //     $('.form-select').eq(1).removeClass('form-hide');
+        //     } else {
+        //         $('.form-select').eq(1).addClass('form-hide');
+        //     }
+        // })
+
+        // select 2: 자바스크립트롤 html 생성하는 법
+        var ShirtsOption = `<option>90</option>
+            <option>95</option>
+            <option>100</option>`;
+        var PantsOption = `<option>28</option>
+            <option>30</option>
+            <option>32</option>`;
         $('.form-select').eq(0).on('input', function(e) {
             var value = e.currentTarget.value;
+            $('.form-select').eq(1).html('');
             if (value == '셔츠') {
-            $('.form-select').eq(1).removeClass('form-hide');
-            } else {
-                $('.form-select').eq(1).addClass('form-hide');
+            $('.form-select').eq(1).append(ShirtsOption);
             }
-        })
+            else if (value == '바지') {
+                $('.form-select').eq(1).append(PantsOption);
+            }
+        });
+        
         
     </script>
 
