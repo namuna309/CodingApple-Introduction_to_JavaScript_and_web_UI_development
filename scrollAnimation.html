@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="scrollAnimation.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> 
+</head>
+<body>
+    <div class="card-background">
+        <div class="card-box">
+            <img src="card1.png" alt="">
+        </div>
+        <div class="card-box">
+            <img src="card2.png" alt="">
+        </div>
+        <div class="card-box">
+            <img src="card3.png" alt="">
+        </div>
+    </div>
+
+    <script>
+        $(window).scroll(function() {
+            var h = $(window).scrollTop();
+            console.log(h);
+
+            var y = (-1/500) * h + 115/50;
+            var s = (0.1 / (650 - 1150)) * h + (1150 - 650 * 0.9) / (1150 - 650);
+            $('.card-box').eq(0).css('opacity', y);
+            $('.card-box').eq(0).css('transform', `scale(${s})`);
+        });
+    </script>
+</body>
+</html>
