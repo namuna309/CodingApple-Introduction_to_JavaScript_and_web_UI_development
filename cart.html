@@ -1,0 +1,21 @@
+<!-- 장바구니 기능과 localStorage -->
+  <!-- 숙제 2: cart.html 같은 파일 하나 만들고 페이지 방문시 localStorage에 있던 상품명들을 꺼내서 전부 진열 -->
+<html>
+    <body>
+        <script>
+            var items_str = localStorage.getItem('cart');
+            var items = JSON.parse(items_str);
+            
+            document.querySelector('body').innerHTML = '';
+
+            if (items) {
+                items.forEach(title => {
+                    document.querySelector('body').insertAdjacentHTML('beforeend', `<p>${title}</p>`)
+                })
+            } else {
+                document.querySelector('body').insertAdjacentHTML('beforeend', `장바구니가 비어있습니다`)
+            }
+            
+        </script>
+    </body>
+</html>
