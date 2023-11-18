@@ -24,7 +24,6 @@
         $(window).scroll(function() {
             var h = $(window).scrollTop();
             console.log(h);
-
             var y = (-1/500) * h + 115/50;
             var s = (0.1 / (650 - 1150)) * h + (1150 - 650 * 0.9) / (1150 - 650);
             $('.card-box').eq(0).css('opacity', y);

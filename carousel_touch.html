@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="modal.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="carousel.css">
+    <title>Homework - make modal</title>
+</head>
+<body>
+    <!-- css 애니매이션 만드는 법칙 -->
+    <!-- one-way UI => 1. 시작스타일 2. 최종스타일 3. 원할 때 최종스타일로 변하라고 코드 짬 4. transition 추가 -->
+    <div class="black-bg">
+        <div class="white-bg">
+          <h4>로그인하세요</h4>
+          <form>
+            <div class="my-3">
+              <input id="email" type="text" class="form-control">
+             </div>
+             <div class="my-3">
+               <input id="password" type="password" class="form-control">
+             </div>
+             <button type="submit" class="btn btn-primary" id="send">전송</button>
+             <button type="button" class="btn btn-danger" id="close">닫기</button>
+            </form> 
+        </div>
+    </div>
+
+
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand">JSShop</span>
+            <span class="badge bg-dark">Dark 🔄</span>
+            <button class="navbar-toggler" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <button class="btn btn-primary login" type="submit">로그인</button>
+    
+    <!-- carousel 만들기 -->
+    <div style="overflow: hidden;">
+        <div class="slide-container">
+            <div class="slide-box">
+                <img src="car1.png" draggable="false">
+            </div>
+            <div class="slide-box">
+                <img src="car2.png" draggable="false">
+            </div>
+            <div class="slide-box">
+                <img src="car3.png">
+            </div>
+        </div>
+    </div>
+    
+    <button class="previous">이전</button>
+    <button class="slide-1">1</button>
+    <button class="slide-2">2</button>
+    <button class="slide-3">3</button>
+    <button class="next">다음</button>
+    
+    <script>
+        // carousel2: 다음버튼 누르면 사진 넘어가게 하기
+        // 다음버튼 누르면
+        // 지금 보이는 사진이 1이면 2번 사진보여주세요~
+        // 지금 보이는 사진이 2이면 3번 사진보여주세요~
+        var nowPicture = 1;
+
+        $('.previous').on('click', () => {
+            if ( nowPicture > 1 ) {
+                --nowPicture;
+                $('.slide-container').css('transform', 'translateX('+ ((-1) * 100 * nowPicture + 100) + 'vw)');
+            }
+            
+        })
+        
+        $('.next').on('click', () => {
+            if ( nowPicture < $('.slide-container').children().length ) {
+                $('.slide-container').css('transform', 'translateX('+ (-1) * 100 * nowPicture + 'vw)'); 
+                nowPicture++;
+            }
+            
+            
+        })
+
+        $('.slide-1').on('click', () => {
+            $('.slide-container').css('transform', 'translateX(0vw)');
+            nowPicture = 1;
+        })
+        $('.slide-2').on('click', () => {
+            $('.slide-container').css('transform', 'translateX(-100vw)');
+            nowPicture = 2;
+        })
+        $('.slide-3').on('click', () => {
+            $('.slide-container').css('transform', 'translateX(-200vw)');
+            nowPicture = 3;
+        })
+    </script>
+
+    <!-- 캐러셀에 스와이프 기능 만들기 -->
+    <script>
+        // 기능 1. 내가 드래그한 거리만큼 사진도 왼쪽으로 움직임
+        // 알아야할 이벤트: mousedown, mouseup, mousemove
+        var start = 0;
+        var isPush = false;
+        var diff = 0;
+        $(".slide-box").eq(0).on('mousedown', function(e) {
+            start = e.clientX;
+            isPush = true;
+            $('.slide-container').css('transition', '');
+
+        });
+        
+        
+        $(".slide-box").eq(0).on('mousemove', function(e) {
+            if(isPush) {
+                diff = e.clientX - start;
+                console.log(diff);
+                $('.slide-container').css('transform', `translateX(${diff}px)`);
+            }
+        });
+
+        $(".slide-box").eq(0).on('mouseup', function(e) {
+            
+            if (isPush) {
+                isPush = false; 
+                if (diff <= -100) {
+                $('.slide-container').css('transition', 'all 1s');
+                $('.slide-container').css('transform', 'translateX('+ (-1) * 100 * nowPicture + 'vw)'); 
+                nowPicture++;
+                }
+                if (diff > -100) {
+                    $('.slide-container').css('transition', 'all 1s');
+                    $('.slide-container').css('transform', 'translateX(0vw)'); 
+                }
+                diff = 0;
+            }
+            
+        });
+        
+        // 기능 2. 손 놓으면 100px 이상 움겼을 대 다음 사진 보임
+    </script>
+
+    <script>
+        $('.login').on('click', function() {
+            $('.black-bg').addClass('show-modal')
+        })
+        $('#close').on('click', function() {
+            $('.black-bg').removeClass('show-modal')
+        })
+    </script>
+
+    <!-- 공백검사 -->
+    <script>
+        $('form').on('submit', function(e) {
+            var email = $.trim($('#email').val());
+            var password = $.trim($('#password').val());
+            console.log(email);
+            console.log(password);
+            if (/\S+@\S+\.\S+/.test(email) == false) {
+                alert('이메일형식아님');
+                e.preventDefault();
+            }
+            // 숙제: 영어 대문자가 적어도 1개 있는지 검사
+            if(/[A-Z]/.test(password) == false) {
+                alert('비밀번호형식아님');
+                e.preventDefault();
+            }
+        })
+    </script>
+    
+    <script>
+        // 다크모드 만들어보자
+        // 1. badge 홀수번 클릭 시 내부 글자를 light로 변경
+        // 2. badge 짝수번 클릭 시 내부 글자를 Dark로 변경
+        // ...
+
+        var dark = true;
+        
+        $('.badge').on('click', function() {
+            if(dark) {
+                $('.badge').html('Light 🔄');
+                $('.navbar.navbar-light.bg-light').attr('class', 'navbar navbar-dark bg-dark')
+                dark = false;
+            }else {
+                dark = true;
+                $('.badge').html('Dark 🔄');
+                $('.navbar.navbar-dark.bg-dark').attr('class', 'navbar navbar-light bg-light')
+            }
+        })
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
