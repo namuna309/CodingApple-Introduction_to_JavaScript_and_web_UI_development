@@ -110,9 +110,7 @@
     });
 
     $('#filter').click(() => {
-      let fp = products.filter(product => {
-        return product.price <= 60000;
-      });
+      let fp = products.filter(product => product.price <= 60000);
       $('.row').html('');
       appendProduct(fp);
     });
